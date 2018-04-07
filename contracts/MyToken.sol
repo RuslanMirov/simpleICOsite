@@ -1,9 +1,9 @@
 pragma solidity ^0.4.2;
 
-contract DappToken {
-    string  public name = "DApp Token";
-    string  public symbol = "DAPP";
-    string  public standard = "DApp Token v1.0";
+contract MyToken {
+    string  public name = "My Token";
+    string  public symbol = "MYT";
+    string  public standard = "v1.0";
     uint256 public totalSupply;
 
     event Transfer(
@@ -17,11 +17,14 @@ contract DappToken {
         address indexed _spender,
         uint256 _value
     );
-
+    //Вспомогательный асссоциативный массив (ключ => значение)
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
 
-    function DappToken (uint256 _initialSupply) public {
+    //В конструкторе присваеваем все токены, на адрес создателя контракта
+    // а так же записываем общее количество токенов в переменную totalSupply
+    //Инициализация происходит в файле миграций
+    function MyToken (uint256 _initialSupply) public {
         balanceOf[msg.sender] = _initialSupply;
         totalSupply = _initialSupply;
     }

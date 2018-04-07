@@ -1,16 +1,16 @@
 pragma solidity ^0.4.2;
 
-import "./DappToken.sol";
+import "./MyToken.sol";
 
 contract DappTokenSale {
     address admin;
-    DappToken public tokenContract;
+    MyToken public tokenContract;
     uint256 public tokenPrice;
     uint256 public tokensSold;
 
     event Sell(address _buyer, uint256 _amount);
 
-    function DappTokenSale(DappToken _tokenContract, uint256 _tokenPrice) public {
+    function DappTokenSale(MyToken _tokenContract, uint256 _tokenPrice) public {
         admin = msg.sender;
         tokenContract = _tokenContract;
         tokenPrice = _tokenPrice;

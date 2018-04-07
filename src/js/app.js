@@ -33,10 +33,10 @@ App = {
         console.log("Dapp Token Sale Address:", dappTokenSale.address);
       });
     }).done(function() {
-      $.getJSON("DappToken.json", function(dappToken) {
-        App.contracts.DappToken = TruffleContract(dappToken);
-        App.contracts.DappToken.setProvider(App.web3Provider);
-        App.contracts.DappToken.deployed().then(function(dappToken) {
+      $.getJSON("MyToken.json", function(dappToken) {
+        App.contracts.MyToken = TruffleContract(dappToken);
+        App.contracts.MyToken.setProvider(App.web3Provider);
+        App.contracts.MyToken.deployed().then(function(dappToken) {
           console.log("Dapp Token Address:", dappToken.address);
         });
 
@@ -96,7 +96,7 @@ App = {
       $('#progress').css('width', progressPercent + '%');
 
       // Load token contract
-      App.contracts.DappToken.deployed().then(function(instance) {
+      App.contracts.MyToken.deployed().then(function(instance) {
         dappTokenInstance = instance;
         return dappTokenInstance.balanceOf(App.account);
       }).then(function(balance) {

@@ -1,4 +1,4 @@
-var DappToken = artifacts.require('./DappToken.sol');
+var MyToken = artifacts.require('./MyToken.sol');
 var DappTokenSale = artifacts.require('./DappTokenSale.sol');
 
 contract('DappTokenSale', function(accounts) {
@@ -26,7 +26,7 @@ contract('DappTokenSale', function(accounts) {
   });
 
   it('facilitates token buying', function() {
-    return DappToken.deployed().then(function(instance) {
+    return MyToken.deployed().then(function(instance) {
       // Grab token instance first
       tokenInstance = instance;
       return DappTokenSale.deployed();
@@ -63,7 +63,7 @@ contract('DappTokenSale', function(accounts) {
   });
 
   it('ends token sale', function() {
-    return DappToken.deployed().then(function(instance) {
+    return MyToken.deployed().then(function(instance) {
       // Grab token instance first
       tokenInstance = instance;
       return DappTokenSale.deployed();

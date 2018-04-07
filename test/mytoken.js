@@ -1,25 +1,25 @@
-var DappToken = artifacts.require("./DappToken.sol");
+var MyToken = artifacts.require("./MyToken.sol");
 
-contract('DappToken', function(accounts) {
+contract('MyToken', function(accounts) {
   var tokenInstance;
 
   it('initializes the contract with the correct values', function() {
-    return DappToken.deployed().then(function(instance) {
+    return MyToken.deployed().then(function(instance) {
       tokenInstance = instance;
       return tokenInstance.name();
     }).then(function(name) {
-      assert.equal(name, 'DApp Token', 'has the correct name');
+      assert.equal(name, 'My Token', 'has the correct name');
       return tokenInstance.symbol();
     }).then(function(symbol) {
-      assert.equal(symbol, 'DAPP', 'has the correct symbol');
+      assert.equal(symbol, 'MYT', 'has the correct symbol');
       return tokenInstance.standard();
     }).then(function(standard) {
-      assert.equal(standard, 'DApp Token v1.0', 'has the correct standard');
+      assert.equal(standard, 'v1.0', 'has the correct standard');
     });
   })
 
   it('allocates the initial supply upon deployment', function() {
-    return DappToken.deployed().then(function(instance) {
+    return MyToken.deployed().then(function(instance) {
       tokenInstance = instance;
       return tokenInstance.totalSupply();
     }).then(function(totalSupply) {
@@ -31,7 +31,7 @@ contract('DappToken', function(accounts) {
   });
 
   it('transfers token ownership', function() {
-    return DappToken.deployed().then(function(instance) {
+    return MyToken.deployed().then(function(instance) {
       tokenInstance = instance;
       // Test `require` statement first by transferring something larger than the sender's balance
       return tokenInstance.transfer.call(accounts[1], 99999999999999999999999);
@@ -57,7 +57,7 @@ contract('DappToken', function(accounts) {
   });
 
   it('approves tokens for delegated transfer', function() {
-    return DappToken.deployed().then(function(instance) {
+    return MyToken.deployed().then(function(instance) {
       tokenInstance = instance;
       return tokenInstance.approve.call(accounts[1], 100);
     }).then(function(success) {
@@ -76,7 +76,7 @@ contract('DappToken', function(accounts) {
   });
 
   it('handles delegated token transfers', function() {
-    return DappToken.deployed().then(function(instance) {
+    return MyToken.deployed().then(function(instance) {
       tokenInstance = instance;
       fromAccount = accounts[2];
       toAccount = accounts[3];
